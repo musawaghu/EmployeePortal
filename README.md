@@ -4,4 +4,6 @@ This is the employee portal repository
 
 TODO:
 
-Create the login and calender screens
+Login, View, and Calendar are finished.
+
+Now need to add onto it and further develop it.
