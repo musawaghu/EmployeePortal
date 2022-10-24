@@ -1,25 +1,25 @@
 import PySimpleGUI as psg
 
-# Our content inside our screen
-screen = [[psg.Text("Enter the employee you wish to view: "), psg.InputText()],
-          [psg.Button("Submit")]]
 
-# Create the Window
-window = psg.Window("View Employee", screen)
+class ViewEmployee:
+    def __init__(self):
+        screen = [[psg.Text("ID: ")],
+                  [psg.Text("First Name:")],
+                  [psg.Text("Last Name:")],
+                  [psg.Text("Email: ")],
+                  [psg.Text("Date of Birth: ")],
+                  [psg.Text("Phone: ")],
+                  [psg.Text("Address:")],
+                  [psg.Text("Role ID:")],
+                  [psg.Text("Status:")]]
 
-event, values = window.read()
+        # Create the Window
+        window = psg.Window("Employee Details", screen)
 
-if event == psg.WIN_CLOSED:  # if user closes window, exit out of window
-    window.close()
+        # Event Loop to process "events" and get the "values" of the inputs
+        while True:
+            event, values = window.read()
+            if event == psg.WIN_CLOSED:  # if user closes window, exit out of window
+                break
 
-if event == "Submit":
-    employeeDetailScreen = [[psg.Text("Employee: "), psg.Text(values[0])],
-                            [psg.Text("Age: ")],  # Going to fetch these details from our database/dictionary. Not sure how yet.
-                            [psg.Text("Email: ")],
-                            [psg.Text("Phone Number: ")],
-                            [psg.Text("Position: ")]]
-
-    employeeDetailWindow = psg.Window("Viewing Employee Details", employeeDetailScreen).read()
-    window.close()
-
-window.close()
+        window.close()

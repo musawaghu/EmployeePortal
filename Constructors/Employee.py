@@ -1,9 +1,11 @@
 class Employee:
-    def __init__(self, employee_ID, fullName, email, DOB, phone, address, position):
+    def __init__(self, employee_ID, firstName, lastName, email, DOB, phone, address, roleID, status):
         self.employee_ID = employee_ID
-        self.fullName = fullName
+        self.firstName = firstName
+        self.lastName = lastName
         self.email = email
         self.DOB = DOB
         self.phone = phone
         self.address = address
-        self.position = position
+        self.roleID = roleID
+        self.status = status
