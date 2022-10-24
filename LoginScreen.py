@@ -1,6 +1,3 @@
-# This is the login screen for employees
-# Remember to install PySimpleGui and import
-
 import PySimpleGUI as psg
 
 # Our content inside our screen
