@@ -35,7 +35,7 @@ class ViewEmployee:
                               [psg.Text("Date of Birth: "), psg.Text(data["dob"])],
                               [psg.Text("Phone: "), psg.Text(data["phone"])],
                               [psg.Text("Address:"), psg.Text(data["address"])],
-                              [psg.Text("Role ID:"), psg.Text(data["roleID"])],
+                              [psg.Text("Position:"), psg.Text(data["roleID"])],
                               [psg.Text("Status:"), psg.Text(data["status"])],
                               [psg.Button("Edit Profile")]
                               ]
@@ -55,7 +55,7 @@ class ViewEmployee:
                                           [psg.Text("Date of Birth: "), psg.InputText()],
                                           [psg.Text("Phone: "), psg.InputText()],
                                           [psg.Text("Address:"), psg.InputText()],
-                                          [psg.Text("Role ID:")],
+                                          [psg.Text("Position:")],
                                           [psg.Text("Status:")],
                                           [psg.Button("Save")]]
                             editWindow = psg.Window("Edit Profile", editScreen)
