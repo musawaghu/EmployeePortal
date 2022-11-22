@@ -30,10 +30,8 @@ def main():
     LoginScreenWindow.close()
 
     # Code for finding BiWeekly Payments
-    employeeID = "1"  # set to whatever employee you want
-    print("Printing the ID before the biweekly search api " + employeeID)
-    # Faisal's code is employeeID = "1", and in the get request its "....employee?id=1"
-    foundEmployee = requests.get("https://uhwxroslh0.execute-api.us-east-1.amazonaws.com/dev/employee?id=1")
+    employeeID = saved_id  # set to whatever employee you want
+    foundEmployee = requests.get("https://uhwxroslh0.execute-api.us-east-1.amazonaws.com/dev/employee?id={}".format(employeeID))
     print("Employee role ID:")
     print(foundEmployee.json()["Item"]["roleID"])
     roleID = foundEmployee.json()["Item"]["roleID"]
