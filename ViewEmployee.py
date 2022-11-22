@@ -17,7 +17,6 @@ class ViewEmployee:
             jsonData = request.json()["Items"]
             for data in jsonData:
                 if firstName == data["firstName"] and (int(id) == data["id"]):
-                    print(data["id"], data["firstName"], data["lastName"], data["email"])
                     if data["roleID"] == 1:
                         data["roleID"] = "Intern"
                     elif data["roleID"] == 2:
@@ -73,20 +72,22 @@ class ViewEmployee:
                                     }
 
                                     payload = {
-                                        "firstName": values[0],
-                                        "roleID": "3"
+                                        "lastName": values[1],
+                                        "dob": values[3],
+                                        "address": values[5],
+                                        "email": values[2],
+                                        "phone": values[4],
+                                        "firstName": values[0]
                                     }
 
                                     try:
                                         r = requests.patch(
-                                            'https://uhwxroslh0.execute-api.us-east-1.amazonaws.com/dev/employee/2',
+                                            'https://uhwxroslh0.execute-api.us-east-1.amazonaws.com/dev/employee/' + id,
                                             data=json.dumps(payload), headers=headers)
-                                        print(r.status_code)
                                     except requests.exceptions.HTTPError as err:
                                         print(err)
-
-                                editWindow.close()
-                    window.close()
+                                    editWindow.close()
+                                    window.close()
 
         except requests.exceptions.HTTPError as err:
             print(err)
