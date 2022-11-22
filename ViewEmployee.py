@@ -86,6 +86,7 @@ class ViewEmployee:
                                             data=json.dumps(payload), headers=headers)
                                     except requests.exceptions.HTTPError as err:
                                         print(err)
+                                    psg.popup("Please login again to see changes")
                                     editWindow.close()
                                     window.close()
 
