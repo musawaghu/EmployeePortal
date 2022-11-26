@@ -32,8 +32,8 @@ def main():
     # Code for finding BiWeekly Payments
     employeeID = saved_id  # set to whatever employee you want
     foundEmployee = requests.get("https://uhwxroslh0.execute-api.us-east-1.amazonaws.com/dev/employee?id={}".format(employeeID))
-    print("Employee role ID:")
-    print(foundEmployee.json()["Item"]["roleID"])
+    #print("Employee role ID:")
+    #print(foundEmployee.json()["Item"]["roleID"])
     roleID = foundEmployee.json()["Item"]["roleID"]
     # Now that we have the role ID, let's find the employee's hourly rate
     foundRole = requests.get("https://uhwxroslh0.execute-api.us-east-1.amazonaws.com/dev/roles")
@@ -42,8 +42,8 @@ def main():
         if item["id"] == roleID:
             hourlyRate = item["payRate"]
             break
-    print("Found hourly rate:")
-    print(hourlyRate)
+    #print("Found hourly rate:")
+    #print(hourlyRate)
 
     # Now we have our employee's hourly rate, let's find all the attendance records and payment records for the past 2 weeks
 
@@ -53,16 +53,16 @@ def main():
     d = timedelta(days=14)
     a = tod - d
     twoWeeksAgo = a.strftime('%m/%d/%Y')
-    print(todayDate)
-    print(twoWeeksAgo)
+    #print(todayDate)
+    #print(twoWeeksAgo)
 
     paymentsCount = 0
     foundPayments = requests.get("https://uhwxroslh0.execute-api.us-east-1.amazonaws.com/dev/payments")
     for payment in foundPayments.json()["Items"]:
         if payment["employeeID"] == employeeID:
             paymentsCount += 1
-    print("Total payment records for employee:")
-    print(paymentsCount)
+    #print("Total payment records for employee:")
+    #print(paymentsCount)
 
     # Multiply all by 8 hours and hourly rate to get total number of working hours payment
     preTaxIncome = paymentsCount * 8 * hourlyRate
@@ -72,8 +72,8 @@ def main():
 
     # Final Payment
     postTaxBiweeklyPayment = preTaxIncome - incomeTax
-    print("Biweekly payment:")
-    print(postTaxBiweeklyPayment)
+    #print("Biweekly payment:")
+    #print(postTaxBiweeklyPayment)
     # Main Menu Screen
     MainMenuScreen = [[psg.Button("Profile", pad=(0, 15))],
                       [psg.Button("View Shift", pad=(0, 15))],
