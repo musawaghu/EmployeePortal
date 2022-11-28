@@ -76,7 +76,7 @@ def main():
     #print(postTaxBiweeklyPayment)
     # Main Menu Screen
     MainMenuScreen = [[psg.Button("Profile", pad=(0, 15))],
-                      [psg.Button("View Shift", pad=(0, 15))],
+                      [psg.Button("View Shifts", pad=(0, 15))],
                       [psg.Button("View Leaves/Vacations", pad=(0, 15))],
                       [psg.Text("Your Biweekly Payment: $" + str(postTaxBiweeklyPayment))]
                       ]

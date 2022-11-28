@@ -10,7 +10,6 @@ class CalendarView:
             [psg.Submit()]]
 
         window = psg.Window("Calendar", layout)
-
         while True:
             event, values = window.read()
             if event == psg.WIN_CLOSED:
