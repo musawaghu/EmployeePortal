@@ -19,6 +19,7 @@ class CalendarView:
                 import requests
                 selectedDate = values['Date']
                 idList = []
+                nameList = []
                 headers = {
                     "Content-Type": "application/json",
                     "Connection": "keep-alive",
@@ -26,12 +27,16 @@ class CalendarView:
                 try:
                     request = requests.get("https://uhwxroslh0.execute-api.us-east-1.amazonaws.com/dev/attendance/all")
                     jsonData = request.json()["Items"]
+                    request2 = requests.get("https://uhwxroslh0.execute-api.us-east-1.amazonaws.com/dev/employees")
+                    jsonData2 = request2.json()["Items"]
                     for data in jsonData:
                         if selectedDate == data["scheduledDate"]:
-                            idList.append(data["id"])
-                            print(data["id"])
-
+                            idList.append(data["employeeID"])
+                            for data2 in jsonData2:
+                                if data["employeeID"] == str(data2["id"]):
+                                    nameList.append(data2["firstName"])
                 except requests.exceptions.HTTPError as err:
                     print(err)
-                psg.popup("This will display which employees have a shift on this day", selectedDate, *idList)
+                joinedList = "\n".join("Employee: {}\tID: {}\n".format(x, y) for x, y in zip(nameList, idList))
+                psg.popup("List of employees and their ID's scheduled for: " + selectedDate, joinedList)
         window.close()
